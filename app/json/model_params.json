@@ -4,7 +4,6 @@
   "num_threads": 15,
   "max_bin": 470,
   "min_data_in_leaf": 47,
-  "random_seed": 777,
   "feature_fraction": 0.6,
   "model_name": "LightgbmRegressorModel",
   "objective": "regression",
