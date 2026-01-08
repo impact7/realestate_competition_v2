@@ -181,7 +181,7 @@ if __name__ == '__main__':
         '--project-dir',
         '/app/dbt/dbt_projects_postgresql/make_prepare_datamart',
         '--vars',
-        '{{ train_test: train }}'
+        '{ train_test: train }'
     ]
 
     subprocess.run(lst_subprocess)
@@ -195,7 +195,7 @@ if __name__ == '__main__':
         '--project-dir',
         '/app/dbt/dbt_projects_postgresql/make_prepare_datamart',
         '--vars',
-        '{{ train_test: test }}'
+        '{ train_test: test }'
     ]
 
     subprocess.run(lst_subprocess)
