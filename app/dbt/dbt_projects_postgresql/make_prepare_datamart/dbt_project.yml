@@ -1,0 +1,16 @@
+name: 'make_prepare_datamart'
+
+config-version: 2
+version: '1.0.0'
+
+profile: 'make_prepare_datamart'
+
+model-paths: ["../../models/make_prepare_datamart_postgresql"]
+target-path: "target"
+
+models:
+  make_prepare_datamart:
+    +materialized: table
+    +full_refresh: true
+
+

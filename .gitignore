@@ -1,0 +1,10 @@
+.local
+.ipython
+.jupyter
+.idea
+.cache
+.config
+/app/pkl/
+/app/parquet/
+/app/.bash_history
+/app/competition_data

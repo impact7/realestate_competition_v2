@@ -1,0 +1,16 @@
+name: 'make_submit_datamart'
+
+config-version: 2
+version: '1.0.0'
+
+profile: 'make_submit_datamart'
+
+model-paths: ["../../models/make_submit_datamart_postgresql"]
+target-path: "target"
+
+models:
+  make_submit_datamart:
+    +materialized: table
+    +full_refresh: true
+
+

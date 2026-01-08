@@ -1,0 +1,19 @@
+FROM ghcr.io/mlflow/mlflow:v3.5.0
+
+RUN apt-get update && apt-get install -y \
+    sudo \
+    wget \
+    vim \
+    python3-pip \
+    python3-dev \
+    libpq-dev
+
+EXPOSE 5000
+
+RUN pip install --upgrade pip
+
+RUN pip install poetry
+ENV export PATH=/.poetry/bin:$PATH
+COPY pyproject.toml ./
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root

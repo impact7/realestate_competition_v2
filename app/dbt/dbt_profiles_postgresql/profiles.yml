@@ -1,0 +1,38 @@
+make_prepare_datamart:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: host.docker.internal
+      user: postgres
+      password: passw0rd
+      port: 5434
+      dbname: postgres
+      schema: prepare_data
+      threads: 8
+
+make_submit_datamart:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: host.docker.internal
+      user: postgres
+      password: passw0rd
+      port: 5434
+      dbname: postgres
+      schema: submit_data
+      threads: 8
+
+make_adj_datamart:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: host.docker.internal
+      user: postgres
+      password: passw0rd
+      port: 5434
+      dbname: postgres
+      schema: adj_submit_data
+      threads: 8

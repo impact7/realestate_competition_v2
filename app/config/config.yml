@@ -1,0 +1,8 @@
+db:
+  dbms_name: "PostgreSQL"
+  conn:
+    host: 'host.docker.internal'
+    dbname: 'postgres'
+    user: 'postgres'
+    password: 'passw0rd'
+    port: 5434

@@ -1,0 +1,34 @@
+services:
+  ml_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: ${USERNAME}
+        GROUPNAME: ${GROUPNAME}
+        UID: ${UID}
+        GID: ${GID}
+
+#    env_file:
+#      - .env
+    shm_size: '2gb'
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - GRANT_SUDO=yes
+      - PYTHONPATH=/
+      - JUPYTER_CONFIG_DIR=/app/.jupyter
+      - JUPYTER_DATA_DIR=/app/.local/share/jupyter
+      - JUPYTER_RUNTIME_DIR=/app/.local/share/jupyter/runtime
+    tty: true
+    user: "${UID}:${GID}"
+    expose:
+      - "8888"
+    ports:
+      - "8900:8888"
+    volumes:
+      - type: bind
+        source: "../../app"
+        target: "/app"
+

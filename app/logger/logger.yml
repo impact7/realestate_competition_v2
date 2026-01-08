@@ -1,0 +1,45 @@
+# ロギング設定のバージョン。必須です。
+version: 1
+# 既存のロガー設定を無効にするかどうか。Falseが一般的。
+disable_existing_loggers: False
+
+# ログのフォーマットを定義
+formatters:
+  # コンソール用のシンプルなフォーマット
+  simple:
+    format: '%(levelname)-8s | %(message)s'
+  # ファイル用の詳細なフォーマット
+  detailed:
+    format: '%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+# ログの出力先（ハンドラ）を定義
+handlers:
+  # コンソールへの出力設定
+  console:
+    class: logging.StreamHandler
+    level: DEBUG # コンソールにはDEBUG以上の全ログを出力
+    formatter: simple # 上で定義したsimpleフォーマットを使用
+    stream: ext://sys.stdout
+  # ファイルへの出力設定
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO # ファイルにはINFO以上のログを記録
+    formatter: detailed # 上で定義したdetailedフォーマットを使用
+    filename: app.log # ログファイル名
+    maxBytes: 10485760 # 10MBでファイルをローテーション
+    backupCount: 5 # 5世代までバックアップを保持
+    encoding: utf8
+
+# ロガーを定義
+loggers:
+  # 特定のライブラリのログレベルを制御（例: requestsがうるさい場合など）
+  urllib3:
+    level: WARNING
+    handlers: [console, file]
+    propagate: no # ルートロガーに伝播させない
+
+# すべてのロガーの基本となるルートロガーの設定
+root:
+  level: INFO # デフォルトのログレベル
+  handlers: [console, file] # 上で定義したconsoleとfileハンドラを使用

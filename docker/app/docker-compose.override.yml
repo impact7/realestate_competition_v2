@@ -1,0 +1,15 @@
+services:
+  ml_app:
+    environment:
+      # ADC を見る先は $HOME/.config/gcloud。ROOTなら /root、非rootなら /home/<user>
+      CLOUDSDK_CONFIG: /app/.config/gcloud
+      # BigQuery/Storage 等のクライアントは ADC を自動探索するので
+      # GOOGLE_APPLICATION_CREDENTIALS は不要（下でADCファイルをマウントするため）
+      # 任意: プロジェクト固定したいとき
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-}
+
+    volumes:
+      # ホストの gcloud 設定をマウント（ADC: application_default_credentials.json を含む）
+      - type: bind
+        source: "${HOME}/.config/gcloud"
+        target: "/app/.config/gcloud"

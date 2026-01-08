@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16
+    shm_size: "8g"
+    cpus: "8"
+    mem_limit: 32g
+    restart: always
+    ipc: "host"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passw0rd
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata_ml:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    command: >
+      postgres
+      -c shared_buffers=32GB
+      -c work_mem=1024MB
+      -c max_parallel_workers_per_gather=8
+
+volumes:
+  pgdata_ml:
+

@@ -1,0 +1,1 @@
+{"verbosity": -1, "learning_rate": 0.246, "num_threads": 16, "max_bin": 502, "min_data_in_leaf": 399, "random_seed": 777, "feature_fraction": 0.95, "model_name": "LightgbmRegressorModel", "objective": "regression", "num_boost_round": 1000, "num_leaves": 62}

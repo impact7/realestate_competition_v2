@@ -1,0 +1,9 @@
+[tool.poetry]
+name = "mlflow_server"
+version = "0.1.0"
+description = ""
+authors = ["hideki"]
+
+[tool.poetry.dependencies]
+python = "3.10.18"
+psycopg2-binary = "2.9.10"
