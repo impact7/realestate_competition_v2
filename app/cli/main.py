@@ -97,7 +97,7 @@ if __name__ == '__main__':
 
     str_table_name = 'test_predict'
 
-    df = FileUtil.get_instance().load_parquet('/app/competition_data/process/test_predict.parquet')
+    df = FileUtil.get_instance().load_parquet('/app/parquet/test_predict/test_predict.parquet')
 
     upload_parquet_to_db.upload_parquet_to_db(dict_db, 'output', str_table_name, df)
 
