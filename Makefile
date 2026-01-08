@@ -29,6 +29,11 @@ app-run-pipeline-prepare:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
 			python3 cli/prepare_data.py
 
+.PHONY: app-run-pipeline-dbt
+app-run-pipeline-dbt:
+	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
+			python3 cli/dbt.py
+
 .PHONY: infra-build
 infra-build:
 	docker compose --env-file .env -f docker/infra/docker-compose.yml build
