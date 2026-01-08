@@ -7,7 +7,7 @@ import pandas as pd
 import polars as pl
 import geopandas as gpd
 from typing import Dict
-from app.modules.settings.settings import DEFAULT_PROTOCOL, DICT_S3_PARAMS
+from app.modules.settings.settings import DEFAULT_PROTOCOL
 from app.modules.utils.filesystem import FileSystem
 
 logger = logging.getLogger(__name__)
