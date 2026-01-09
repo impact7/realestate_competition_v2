@@ -1,0 +1,13 @@
+{
+  "verbosity": -1,
+  "learning_rate": 0.2,
+  "num_threads": 15,
+  "max_bin": 2048,
+  "min_data_in_leaf": 1,
+  "feature_fraction": 0.9,
+  "boosting": "dart",
+  "model_name": "LightgbmRegressorModel",
+  "objective": "regression",
+  "num_boost_round": 5000,
+  "num_leaves": 511
+}
