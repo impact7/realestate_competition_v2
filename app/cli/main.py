@@ -39,7 +39,7 @@ if __name__ == '__main__':
     db_client.execute_sql('create schema if not exists output')
 
     db_client = DBClient.create(**dict_db)
-    df = db_client.select_sql('select * from prepare_data.\"04_15_train_dm\"')
+    df = db_client.select_sql('select * from prepare_data.\"04_21_train_dm\"')
 
     lst_feature_column_names = None
     lst_drop_column_names = ["id", "target", "money_room", "fold_no", "weight", "weight2", "weight3", "log_weight"]
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     FileUtil.get_instance().save_pickle(cv_datamart, '/app/pkl/cv_datamart.pkl')
     FileUtil.get_instance().save_json(dict_metrics, '/app/json/model_metrics/metrics.json')
 
-    df = db_client.select_sql('select * from prepare_data.\"04_15_test_dm\"')
+    df = db_client.select_sql('select * from prepare_data.\"04_21_test_dm\"')
 
     lst_feature_column_names = None
     lst_drop_column_names = ["id"]
