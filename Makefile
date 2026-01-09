@@ -24,6 +24,11 @@ app-run-pipeline:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
 			python3 cli/main.py
 
+.PHONY: app-run-pipeline2
+app-run-pipeline2:
+	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
+			python3 cli/main2.py
+
 .PHONY: app-run-pipeline-prepare
 app-run-pipeline-prepare:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
