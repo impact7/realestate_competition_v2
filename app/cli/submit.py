@@ -4,6 +4,8 @@ from app.modules.settings.config import AppConfig
 from app.modules.utils.logger import setup_logging
 from app.modules.utils.fileutil import FileUtil
 from app.modules.utils.db_client import DBClient
+from app.modules.prepare_data.upload_parquet_to_db.upload_parquet_to_db import UploadParquetToDB
+
 
 dict_config = AppConfig.get_instance().get_config()
 
@@ -24,6 +26,17 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
     logger.info('Pipeline start.')
     logger.info('submit_task')
+
+    db_client = DBClient.create(**dict_db)
+    db_client.execute_sql('create schema if not exists output')
+
+    upload_parquet_to_db = UploadParquetToDB.create()
+
+    str_table_name = 'test_predict2'
+
+    df = FileUtil.get_instance().load_parquet('/app/parquet/test_predict/test_predict.parquet')
+
+    upload_parquet_to_db.upload_parquet_to_db(dict_db, 'output', str_table_name, df)
 
     # dbt
     lst_subprocess = [
