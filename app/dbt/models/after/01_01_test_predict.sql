@@ -1,6 +1,6 @@
 select
     lpad(cast(t1.id as text), 6, '0') as id,
-    least(cast(t2.y_pred * t1.house_area as bigint), cast(t3.y_pred * t1.house_area as bigint)) as predict
+    least(cast(t2.y_pred * t1.house_area as bigint), cast(t3.y_pred as bigint)) as predict
 from
     "prepare_data"."04_15_test_dm" as t1
     inner join
