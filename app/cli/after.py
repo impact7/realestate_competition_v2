@@ -38,7 +38,7 @@ if __name__ == '__main__':
     subprocess.run(lst_subprocess)
 
     db_client = DBClient.create(**dict_db)
-    df = db_client.select_sql('select * from after.\"01_01_test_predict\"')
+    df = db_client.select_sql('select * from after.\"01_02_test_predict\"')
 
     FileUtil.get_instance().save_df_csv(df, '/app/output/submit.csv')
 
