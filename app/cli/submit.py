@@ -38,6 +38,9 @@ if __name__ == '__main__':
 
     upload_parquet_to_db.upload_parquet_to_db(dict_db, 'output', str_table_name, df)
 
+    df = db_client.select_sql('select * from output.test_predict2 limit 50')
+
+
     # dbt
     lst_subprocess = [
         'dbt',
