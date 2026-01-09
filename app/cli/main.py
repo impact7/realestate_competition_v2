@@ -36,6 +36,9 @@ if __name__ == '__main__':
     cv_datamart = CVMLDatamart()
 
     db_client = DBClient.create(**dict_db)
+    db_client.execute_sql('create schema if not exists output')
+
+    db_client = DBClient.create(**dict_db)
     df = db_client.select_sql('select * from prepare_data.\"04_15_train_dm\"')
 
     lst_feature_column_names = None
