@@ -29,6 +29,11 @@ app-run-pipeline-after:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
 			python3 cli/after.py
 
+.PHONY: app-run-pipeline-submit
+app-run-pipeline-submit:
+	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
+			python3 cli/submit.py
+
 .PHONY: app-run-pipeline-prepare
 app-run-pipeline-prepare:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
