@@ -14,11 +14,6 @@ app-up:
 app-down:
 	docker compose --env-file .env -f docker/app/docker-compose.yml down
 
-.PHONY: app-run-pipeline-gcp
-app-run-pipeline-gcp:
-	docker compose --env-file .env -f docker/app/docker-compose.yml -f docker/app/docker-compose.override.yml \
- 			run --rm ml_app python3 cli/cli_pipeline.py /app/json/pipeline/pipeline_gcp.json
-
 .PHONY: app-run-pipeline
 app-run-pipeline:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
@@ -28,6 +23,11 @@ app-run-pipeline:
 app-run-pipeline2:
 	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
 			python3 cli/main2.py
+
+.PHONY: app-run-pipeline-after
+app-run-pipeline-after:
+	docker compose --env-file .env -f docker/app/docker-compose.yml run --rm ml_app \
+			python3 cli/after.py
 
 .PHONY: app-run-pipeline-prepare
 app-run-pipeline-prepare:
