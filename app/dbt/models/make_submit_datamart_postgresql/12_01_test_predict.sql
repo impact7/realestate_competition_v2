@@ -4,7 +4,7 @@ select
 from
     "prepare_data"."04_15_test_dm" as t1
     inner join
-    "output"."test_predict2" as t2
+    "output"."test_predict" as t2
     on
         t1.id = t2.id
 order by

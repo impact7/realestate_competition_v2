@@ -1,5 +1,5 @@
 {{ config(
-    enabled = (var('train_test') == 'test')
+    enabled = (var('train_test') == 'train')
 ) }}
 
 select
@@ -224,12 +224,16 @@ select
 
     t19.cnt_station_500m,
     t19.sum_population_500m,
+    t19.max_poulation_500m,
     t19.cnt_station_1km,
     t19.sum_population_1km,
+    t19.max_poulation_1km,
     t19.cnt_station_3km,
     t19.sum_population_3km,
+    t19.max_poulation_3km,
     t19.cnt_station_10km,
     t19.sum_population_10km,
+    t19.max_poulation_10km,
     t19.min_distance_eki_population,
     t19.min_distance_eki,
 
@@ -249,9 +253,17 @@ select
     t20.distance_33,
     t20.distance_22,
     t20.distance_17,
-    t20.distance_29
+    t20.distance_29,
+
+    t1.money_room as target,
+    t1.money_room,
+    t1.weight,
+    t1.weight2,
+    t1.weight3,
+    t1.log_weight,
+    t1.fold_no
 from
-    {{ ref('01_01_test_dm_base') }} as t1
+    {{ ref('01_01_train_dm_base') }} as t1
     left join
     {{ ref('02_18_brand_name') }} as t2
     on
@@ -261,10 +273,6 @@ from
     on
         t1.id = t8.id
     left join
-    {{ ref('02_09_dm_reform_wet_area_other') }} as t9
-    on
-        t1.id = t9.id
-    left join
     {{ ref('02_10_dm_reform_interior') }} as t10
     on
         t1.id = t10.id
@@ -272,10 +280,6 @@ from
     {{ ref('02_11_dm_interior_other') }} as t11
     on
         t1.id = t11.id
-    left join
-    {{ ref('02_12_dm_reform_etc') }} as t12
-    on
-        t1.id = t12.id
     left join
     {{ ref('03_01_dm_building_tag_temp') }} as t13
     on

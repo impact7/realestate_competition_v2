@@ -224,12 +224,16 @@ select
 
     t19.cnt_station_500m,
     t19.sum_population_500m,
+    t19.max_poulation_500m,
     t19.cnt_station_1km,
     t19.sum_population_1km,
+    t19.max_poulation_1km,
     t19.cnt_station_3km,
     t19.sum_population_3km,
+    t19.max_poulation_3km,
     t19.cnt_station_10km,
     t19.sum_population_10km,
+    t19.max_poulation_10km,
     t19.min_distance_eki_population,
     t19.min_distance_eki,
 
