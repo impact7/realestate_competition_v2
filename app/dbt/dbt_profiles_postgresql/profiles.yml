@@ -24,7 +24,7 @@ make_submit_datamart:
       schema: submit_data
       threads: 8
 
-make_adj_datamart:
+make_after_datamart:
   target: dev
   outputs:
     dev:
@@ -34,5 +34,5 @@ make_adj_datamart:
       password: passw0rd
       port: 5434
       dbname: postgres
-      schema: adj_submit_data
+      schema: after
       threads: 8

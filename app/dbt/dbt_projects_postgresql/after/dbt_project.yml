@@ -1,0 +1,16 @@
+name: 'make_after_datamart'
+
+config-version: 2
+version: '1.0.0'
+
+profile: 'make_after_datamart'
+
+model-paths: ["../../models/after"]
+target-path: "target"
+
+models:
+  make_after_datamart:
+    +materialized: table
+    +full_refresh: true
+
+
