@@ -98,7 +98,7 @@ if __name__ == '__main__':
     # test_predict
     upload_parquet_to_db = UploadParquetToDB.create()
 
-    str_table_name = 'test_predict'
+    str_table_name = 'test_predict2'
 
     df = FileUtil.get_instance().load_parquet('/app/parquet/test_predict/test_predict.parquet')
 
